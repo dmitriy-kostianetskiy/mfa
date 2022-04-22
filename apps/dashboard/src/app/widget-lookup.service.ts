@@ -1,7 +1,7 @@
 import { Injectable, Type } from '@angular/core';
 import { defer, map, Observable } from 'rxjs';
 
-export type WidgetType = 'text';
+export type WidgetType = 'text' | 'image';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,7 @@ export class WidgetLookupService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private readonly widgetsMap: Record<WidgetType, Observable<any>> = {
     ['text']: defer(() => import('text-widget/Component')),
+    ['image']: defer(() => import('image-widget/Component')),
   };
 
   public readonly widgetTypes: WidgetType[] = Object.keys(

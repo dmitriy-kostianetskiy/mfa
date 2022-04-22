@@ -16,11 +16,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
           loadChildren: () =>
             import('login/Module').then((m) => m.RemoteEntryModule),
         },
-        {
-          path: 'text-widget',
-          loadChildren: () =>
-            import('text-widget/Module').then((m) => m.RemoteEntryModule),
-        },
       ],
       { initialNavigation: 'enabledBlocking' }
     ),

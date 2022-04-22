@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly isUserLoggedIn = new BehaviorSubject(false);
+  private readonly isUserLoggedIn = new BehaviorSubject(true);
   readonly isUserLoggedIn$ = this.isUserLoggedIn.asObservable();
 
   checkCredentials(username: string, password: string): void {

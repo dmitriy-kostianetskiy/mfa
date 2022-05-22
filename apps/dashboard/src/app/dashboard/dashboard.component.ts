@@ -15,8 +15,7 @@ interface Widget {
 
 @Component({
   selector: 'mfe-dashboard',
-  template: `<p>dashboard works!</p>
-    <button
+  template: ` <button
       *ngFor="let widgetType of widgetTypes"
       (click)="onCreateWidget(widgetType)"
     >

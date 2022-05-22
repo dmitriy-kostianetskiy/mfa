@@ -2,13 +2,8 @@
   "version": 2,
   "projects": {
     "dashboard": "apps/dashboard",
-    "dashboard-e2e": "apps/dashboard-e2e",
     "image-widget": "apps/image-widget",
-    "image-widget-e2e": "apps/image-widget-e2e",
-    "login": "apps/login",
-    "login-e2e": "apps/login-e2e",
     "shared-data-access-user": "libs/shared/data-access-user",
-    "text-widget": "apps/text-widget",
-    "text-widget-e2e": "apps/text-widget-e2e"
+    "text-widget": "apps/text-widget"
   }
 }

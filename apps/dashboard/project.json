@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/dashboard",
         "index": "apps/dashboard/src/index.html",
@@ -18,7 +20,9 @@
           "apps/dashboard/src/favicon.ico",
           "apps/dashboard/src/assets"
         ],
-        "styles": ["apps/dashboard/src/styles.scss"],
+        "styles": [
+          "apps/dashboard/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/dashboard/webpack.config.js"
@@ -93,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dashboard"],
+      "outputs": [
+        "coverage/apps/dashboard"
+      ],
       "options": {
         "jestConfig": "apps/dashboard/jest.config.js",
         "passWithNoTests": true
@@ -105,7 +111,6 @@
         "commands": [
           "nx serve image-widget",
           "nx serve text-widget",
-          "nx serve login",
           "nx serve dashboard"
         ]
       }

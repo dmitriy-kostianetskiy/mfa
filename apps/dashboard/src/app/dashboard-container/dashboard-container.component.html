@@ -1,0 +1,6 @@
+<mfe-dashboard-header
+  [widgetTypes]="widgetTypes"
+  (createWidget)="onCreateWidget($event)"
+></mfe-dashboard-header>
+
+<mfe-dashboard [widgets]="widgets$ | async"></mfe-dashboard>

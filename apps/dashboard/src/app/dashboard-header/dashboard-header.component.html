@@ -1,0 +1,6 @@
+<button
+  *ngFor="let widgetType of widgetTypes; trackBy: trackWidgetType"
+  (click)="onCreateWidget(widgetType)"
+>
+  Create {{ widgetType }} Widget
+</button>

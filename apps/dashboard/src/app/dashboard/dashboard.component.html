@@ -1,0 +1,20 @@
+<div class="buttons-container">
+  <button
+    *ngFor="let widgetType of widgetTypes; trackBy: trackWidgetType"
+    (click)="onCreateWidget(widgetType)"
+  >
+    Create {{ widgetType }} Widget
+  </button>
+</div>
+
+<div class="widgets-container">
+  <div
+    class="widgets-wrapper"
+    *ngFor="
+      let widgetComponent of widgetComponents;
+      trackBy: trackWidgetComponent
+    "
+  >
+    <ng-container *ngComponentOutlet="widgetComponent"></ng-container>
+  </div>
+</div>

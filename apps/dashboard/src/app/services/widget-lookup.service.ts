@@ -12,7 +12,7 @@ export class WidgetLookupService {
     ['image']: defer(() => import('image-widget/Component')),
   };
 
-  public readonly widgetTypes: WidgetType[] = Object.keys(
+  public readonly widgetTypes: readonly WidgetType[] = Object.keys(
     this.widgetsMap
   ) as WidgetType[];
 

@@ -6,7 +6,7 @@ import {
   Type,
   ChangeDetectorRef,
 } from '@angular/core';
-import { WidgetLookupService, WidgetType } from '../widget-lookup.service';
+import { WidgetLookupService, WidgetType } from '../services/widget-lookup.service';
 
 interface Widget {
   component: Type<unknown>;

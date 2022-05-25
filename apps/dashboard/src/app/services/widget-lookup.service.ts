@@ -1,7 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { defer, map, Observable } from 'rxjs';
-
-export type WidgetType = 'text' | 'image';
+import { WidgetType } from '../model';
 
 @Injectable({
   providedIn: 'root',

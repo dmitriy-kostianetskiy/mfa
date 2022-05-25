@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { defer, map, Observable } from 'rxjs';
-import { WidgetComponentType, WidgetType } from '../model';
+import {
+  ImportedWidgetModule,
+  WidgetComponentType,
+  WidgetType,
+} from '../model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WidgetLookupService {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly widgetsMap: Record<WidgetType, Observable<any>> = {
+  private readonly widgetsMap: Record<
+    WidgetType,
+    Observable<ImportedWidgetModule>
+  > = {
     ['text']: defer(() => import('text-widget/Component')),
     ['image']: defer(() => import('image-widget/Component')),
   };
@@ -23,6 +29,9 @@ export class WidgetLookupService {
       throw new Error(`Unable to find mfe for ${widgetType}`);
     }
 
-    return loaderObservable.pipe(map((item) => item.RemoteEntryComponent));
+    return loaderObservable.pipe(map(this.takeComponent));
   }
+
+  private takeComponent = (module: ImportedWidgetModule): WidgetComponentType =>
+    module.RemoteEntryComponent;
 }

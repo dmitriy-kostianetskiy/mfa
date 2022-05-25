@@ -3,20 +3,15 @@ import {
   ChangeDetectionStrategy,
   ViewContainerRef,
   ViewChild,
-  Type,
   ChangeDetectorRef,
 } from '@angular/core';
-import { WidgetLookupService, WidgetType } from '../services/widget-lookup.service';
-
-interface Widget {
-  component: Type<unknown>;
-  id: number;
-}
+import { WidgetComponentType, WidgetType } from '../model';
+import { WidgetLookupService } from '../services/widget-lookup.service';
 
 @Component({
   selector: 'mfe-dashboard',
-  template: ` <button
-      *ngFor="let widgetType of widgetTypes"
+  template: `<button
+      *ngFor="let widgetType of widgetTypes; trackBy: trackWidgetType"
       (click)="onCreateWidget(widgetType)"
     >
       Create {{ widgetType }} Widget
@@ -24,9 +19,12 @@ interface Widget {
     <div class="widgets-container">
       <div
         class="widgets-wrapper"
-        *ngFor="let widget of widgets; trackBy: trackWidget"
+        *ngFor="
+          let widgetComponent of widgetComponents;
+          trackBy: trackWidgetComponent
+        "
       >
-        <ng-container *ngComponentOutlet="widget.component"></ng-container>
+        <ng-container *ngComponentOutlet="widgetComponent"></ng-container>
       </div>
     </div>`,
   styles: [
@@ -50,7 +48,7 @@ export class DashboardComponent {
   public readonly container!: ViewContainerRef;
 
   public readonly widgetTypes = this.widgetLookup.widgetTypes;
-  public readonly widgets: Widget[] = [];
+  public readonly widgetComponents: WidgetComponentType[] = [];
 
   private counter = 0;
 
@@ -62,17 +60,21 @@ export class DashboardComponent {
   onCreateWidget(widgetType: WidgetType): void {
     this.widgetLookup.loadWidget(widgetType).subscribe({
       next: (component) => {
-        this.widgets.push({
-          component,
-          id: this.counter++,
-        });
+        this.widgetComponents.push(component);
 
         this.changeDetectorRef.markForCheck();
       },
     });
   }
 
-  trackWidget(_: number, widget: Widget): number {
-    return widget.id;
+  trackWidgetComponent(
+    _: number,
+    widgetComponent: WidgetComponentType
+  ): WidgetComponentType {
+    return widgetComponent;
+  }
+
+  trackWidgetType(_: number, widgetType: WidgetType): WidgetType {
+    return widgetType;
   }
 }

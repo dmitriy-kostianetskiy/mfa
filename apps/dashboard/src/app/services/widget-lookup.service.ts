@@ -1,6 +1,6 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { defer, map, Observable } from 'rxjs';
-import { WidgetType } from '../model';
+import { WidgetComponentType, WidgetType } from '../model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class WidgetLookupService {
     this.widgetsMap
   ) as WidgetType[];
 
-  loadWidget(widgetType: WidgetType): Observable<Type<unknown>> {
+  loadWidget(widgetType: WidgetType): Observable<WidgetComponentType> {
     const loaderObservable = this.widgetsMap[widgetType];
 
     if (!loaderObservable) {

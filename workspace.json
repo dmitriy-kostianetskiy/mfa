@@ -3,7 +3,6 @@
   "projects": {
     "dashboard": "apps/dashboard",
     "image-widget": "apps/image-widget",
-    "shared-data-access-user": "libs/shared/data-access-user",
     "text-widget": "apps/text-widget"
   }
 }

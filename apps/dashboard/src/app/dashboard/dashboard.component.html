@@ -1,8 +1,3 @@
-<div class="widgets-container">
-  <div
-    class="widgets-wrapper"
-    *ngFor="let widget of widgets; trackBy: trackWidget"
-  >
-    <ng-container *ngComponentOutlet="widget"></ng-container>
-  </div>
-</div>
+<ng-container *ngFor="let widget of widgets; trackBy: trackWidget">
+  <ng-container *ngComponentOutlet="widget"></ng-container>
+</ng-container>
